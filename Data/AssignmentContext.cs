@@ -20,5 +20,4 @@ public class AssignmentContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseNpgsql("Server=127.0.0.1;Port=5432;Database=TaskDb;User Id=postgres;Password=nimda;");
-
 }

@@ -16,14 +16,12 @@ namespace ToDoAPI.Controllers
             _context = context;
         }
         
-
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Assignment>>> GetAssignments()
         {
             return await _context.Assignments.ToListAsync();
         }
         
-
         [HttpGet("{id}")]
         public async Task<ActionResult<Assignment>> GetAssignment(int id)
         {
@@ -35,8 +33,7 @@ namespace ToDoAPI.Controllers
 
             return assignment;
         }
-
-
+        
         [HttpPost]
         public async Task<ActionResult<Assignment>> PostAssignment(Assignment assignment)
         {
@@ -73,7 +70,6 @@ namespace ToDoAPI.Controllers
             return NoContent();
         }
         
-
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAssignment(int id)
         {
@@ -112,6 +108,5 @@ namespace ToDoAPI.Controllers
                 .Where(a => a.Date.Value.Date < DateTime.Today && a.IsDone == false);
             return await overdueAssignments.ToListAsync();
         }
-
     }
 }

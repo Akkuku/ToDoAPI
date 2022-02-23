@@ -19,5 +19,11 @@ public class AssignmentContext : DbContext
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseNpgsql("Server=127.0.0.1;Port=5432;Database=TaskDb;User Id=postgres;Password=nimda;");
+    {
+        IConfigurationRoot configuration = new ConfigurationBuilder()
+            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+            .AddJsonFile("appsettings.json")
+            .Build();
+        optionsBuilder.UseNpgsql(configuration.GetConnectionString("TaskConnection"));
+    }
 }
